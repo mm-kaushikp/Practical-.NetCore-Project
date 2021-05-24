@@ -29,7 +29,6 @@ namespace WebApplication1.Controllers
                 {
                     db.customerEnteries.Add(customerEntery);
                     db.SaveChanges();
-                    return RedirectToAction(nameof(Index));
                 }
                 else if (btnClick == "Reset")
                 {

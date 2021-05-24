@@ -51,7 +51,6 @@ namespace WebApplication1.Controllers
                 {
                     db.departmentReports.Add(model);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
                 }
             }
             catch (RetryLimitExceededException)

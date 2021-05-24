@@ -50,7 +50,6 @@ namespace WebApplication1.Controllers
                 {
                     db.employeInformation.Add(model);
                     db.SaveChanges();
-                    return RedirectToAction(nameof(Index));
                 }
             }
             catch (RetryLimitExceededException)

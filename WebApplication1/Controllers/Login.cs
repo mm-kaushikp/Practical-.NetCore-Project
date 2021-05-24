@@ -12,23 +12,22 @@ namespace WebApplication1.Controllers
     public class Login : Controller
     {
         private LoginDbContext db = new LoginDbContext();
+
         [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
+
         [HttpPost]
-        public async Task<IActionResult> Index(LoginModel user)
+        public IActionResult Index(Registration registration)
         {
-            if (ModelState.IsValid)
+            var obj = db.registrations.Where(a => a.FirstName.Equals(registration.FirstName) && a.Password.Equals(registration.Password)).FirstOrDefault();
+            if (obj != null)
             {
-                var obj = db.loginModels.Where(a => a.UserName.Equals(user.UserName) && a.Password.Equals(user.Password)).FirstOrDefault();
-                if (obj != null)
-                {
-                    return RedirectToAction("DashBoard");
-                }
+                return RedirectToAction("DashBoard");
             }
-            return View(user);
+            return View(registration);
         }
 
         public ActionResult DashBoard()

@@ -12,21 +12,26 @@ namespace WebApplication1.Controllers
     public class UserRegistration : Controller
     {
         private LoginDbContext db = new LoginDbContext();
+
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(Registration model)
+        public ActionResult Index(Registration model, string btnClick)
         {
             try
             {
-                if (ModelState.IsValid)
+                if (ModelState.IsValid && btnClick == "Submit")
                 {
                     db.registrations.Add(model);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    ViewBag.message = "The user " + model.FirstName + " is saved successfully";
+                }
+                else if (btnClick == "Reset")
+                {
+                    ModelState.Clear();
                 }
             }
             catch (RetryLimitExceededException)

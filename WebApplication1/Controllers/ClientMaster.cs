@@ -38,7 +38,6 @@ namespace WebApplication1.Controllers
                     db.clientMasters.Add(clientMaster);
                     db.SaveChanges();
                 }
-                return RedirectToAction(nameof(Index));
             }
             catch (RetryLimitExceededException)
             {
@@ -59,19 +58,12 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(clientMaster model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    db.clientMasters.Update(model);
-                    db.SaveChanges();
-                }
-                return RedirectToAction(nameof(Index));
+                db.clientMasters.Update(model);
+                db.SaveChanges();
             }
-            catch
-            {
-                return View();
-            }
+            return View("Index");
         }
 
         // GET: ClientMaster/Delete/5

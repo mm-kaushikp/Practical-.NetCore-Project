@@ -60,7 +60,6 @@ namespace WebApplication1.Controllers
                     {
                         file.CopyTo(fileStream);
                     }
-                    return RedirectToAction("Index");
                 }
                 else
                 {

@@ -1,0 +1,73 @@
+﻿@model WebApplication1.Models.Arithmetic
+
+@{
+    ViewBag.Title = "Arithmeticoperation";
+}
+
+<html>
+<head>
+    <style>
+        .div-background-color {
+            width: 300px;
+            border: 1px solid black;
+            padding: 50px;
+            margin: 20px;
+        }
+
+        .label-left--wrapper {
+            margin-left: 20px;
+        }
+
+        input {
+            font-size: 1.1rem;
+        }
+
+        .input-font-width--wrapper {
+            font-size: 1.4rem !important;
+            margin-right: 14px;
+            width: 50px;
+        }
+
+        label {
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div class="div-background-color">
+            <div>
+                <label>
+                    No 1:
+                </label>
+                <label class="label-left--wrapper">@Html.EditorFor(x => x.FirstValue)</label>
+                <br />
+                <br />
+            </div>
+            <div>
+                <label>
+                    No 2:
+                </label>
+                <label class="label-left--wrapper">@Html.EditorFor(x => x.SecondValue)</label>
+
+                <br />
+                <br />
+            </div>
+            <br />
+            <br />
+            <input class="input-font-width--wrapper" type="submit" value="+" name="displayValue" />
+            <input class="input-font-width--wrapper" type="submit" value="-" name="displayValue" />
+            <input class="input-font-width--wrapper" type="submit" value="*" name="displayValue" />
+            <input class="input-font-width--wrapper" type="submit" value="/" name="displayValue" />
+            <br />
+            <h2>
+                @Html.Label("Ans :")
+                @Html.DisplayFor(x => x.DisplayResult)
+            </h2>
+        </div>
+    }
+</body>
+</html>
+
+

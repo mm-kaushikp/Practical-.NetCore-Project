@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "NumericOperation";
+}
+
+<html>
+<head>
+    <style>
+        .div-background-color {
+            width: 300px;
+            border: 1px solid black;
+            padding: 50px;
+            margin: 20px;
+        }
+
+        .click-text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+
+        <div class="div-background-color">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.Label("Enter No:")
+                            <div class="label-left--wrapper form-control col-md-4">
+                                <input class="input-font-width--wrapper" type="text" value="" name="DisplayValue" />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div>
+                        <input class="input-font-width--wrapper" type="radio" value="oddeven" name="NumericValue" />
+                        <label>
+                            Odd or Even
+                        </label>
+                    </div>
+                    <br />
+                    <div>
+                        <input class="input-font-width--wrapper" type="radio" alue="positivnagative" name="NumericValue" />
+                        <label>
+                            Positive or Negative
+                        </label>
+
+                    </div>
+                    <div>
+                    <br />
+                        <input class="input-font-width--wrapper" type="radio" value="square" name="NumericValue" />
+                        <label>
+                            Square
+                        </label>
+
+                    </div>
+                    <br />
+                    <div>
+                        <input class="input-font-width--wrapper" type="radio" value="factorial" name="NumericValue" />
+                        <label>
+                            Factorial
+                        </label>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="click-text-center">
+                        <button class="input-font-width--wrapper">Click</button>
+                    </div>
+                    <h2>
+                        @Html.Label("Ans :")
+                        <label> @ViewBag.DisplayValue</label>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>

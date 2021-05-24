@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebApplication1.Models.departmentReport>
+
+@{
+    ViewBag.Title = "DepartmentIndex";
+}
+
+<h2>Department Wise Report</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "DepartmentReport", FormMethod.Get))
+{
+    <select id="ddlDep" class="col-md-3" name="depName" onchange="this.form.submit();">
+        <option>SELECT DEPARTMENT NAME</option>
+        @foreach (var item in ViewBag.DeprtmentList)
+        {
+            <option value="@item">@item</option>
+        }
+    </select>
+    <table class="table" id="tblDep">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Eno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ename)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Job)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HireDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Commition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Eno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ename)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HireDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Commition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+<script type="text/javascript">
+</script>

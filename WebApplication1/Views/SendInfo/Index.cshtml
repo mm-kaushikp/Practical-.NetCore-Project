@@ -1,0 +1,25 @@
+﻿{
+    ViewBag.Title = "Index";
+}
+
+<h2>Send Information</h2>
+@using (Html.BeginForm())
+{
+<div class="table-bordered">
+    <div class="row" >
+        <div class="col-md-12">
+                @Html.DropDownList("dropDownValue", null, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-md-12 text-center">
+            @Html.CheckBox("checkBoxValue", true)Show Full Details
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-md-12">
+            <input type="submit" value="View Information" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}

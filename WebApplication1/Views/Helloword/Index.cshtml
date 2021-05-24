@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .div-background-color {
+            width: 300px;
+            border: 1px solid black;
+            padding: 50px;
+            margin: 20px;
+        }
+
+        .div-mrg-bottom {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="div-background-color">
+        <div class="div-mrg-bottom"> @ViewBag.message </div>
+        <div>@ViewBag.currentdatetime</div>
+    </div>
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,110 @@
+﻿@model WebApplication1.Models.MarksheetModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .div-padding {
+        padding: 18px;
+    }
+
+    .btn-mrg {
+        margin-right: 18px;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    <div class="table-bordered div-padding">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("Roll Number:")
+            </div>
+            <br />
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.RollNo, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("Name:")
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.Name, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>  <br />
+        <div class="row">
+            <div class="col-md-8 text-center">
+                @Html.Label("Enter Marks")
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("Server Side Web Programming ")
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.s1, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("Computer Network:")
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.s2, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("Buisness Information System:")
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.s3, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("System Software:")
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.s4, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("Information Security:")
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.s5, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-8 text-center">
+                <input type="submit" value="Calculate" name="btnClick" class="btn btn-primary btn-mrg" />
+                <input type="submit" value="Reset" name="btnClick" class="btn btn-warning" />
+            </div>
+        </div>
+
+        <div class="total-center--wrapper">
+            <label>Total:</label>
+            @ViewBag.Total
+        </div>
+        <br />
+
+        <div>
+            <label>Percentage:</label>
+            @ViewBag.per
+        </div>
+        <br />
+        <div>
+            <label>grade:</label>
+            @ViewBag.Grad
+        </div>
+    </div>
+}

@@ -1,0 +1,133 @@
+﻿<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .div-background-color {
+            background-color: lightgrey;
+            width: 600px;
+            border: 1px solid black;
+            padding: 50px;
+            margin: 20px;
+        }
+
+        .div-center--wrapper {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .show-display-massage {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .bgcolortext--wrapper {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .bgcolor-dropdown {
+            width: 50%;
+            font-size: 1.8rem;
+            margin-bottom: 17px;
+        }
+
+        .mrg-top-bottom {
+            margin-top: 17px;
+            margin-bottom: 14px;
+        }
+
+        .tbl-mrg--wrapper {
+            margin-top: 37px;
+            margin-left: 23px;
+        }
+    </style>
+</head>
+<body>
+    <table class="tbl-mrg--wrapper">
+        <tr>
+            <td class="div-background-color">
+                <div class="form-group">
+                    <div class="bgcolortext--wrapper">
+                        Choose a background color:
+                    </div>
+                    <select id="ddlBackColor" class="bgcolor-dropdown">
+                        <option selected="selected">White</option>
+                        <option value="Black">Black</option>
+                        <option value="Red">Red</option>
+                        <option value="Blue">Blue</option>
+                    </select>
+
+
+                    <div class="bgcolortext--wrapper">
+                        Choose a Font:
+                    </div>
+                    <select id="ddlFont" class="bgcolor-dropdown">
+                        <option selected="selected" class="service-small" value="Times New Roman">Times New Roman</option>
+                        <option class="service-small" value="Arial">Arial</option>
+                        <option class="service-small" value="Verdana">Verdana</option>
+                        <option class="service-small" value="Tahoma">Tahoma</option>
+                    </select>
+                    <div class="bgcolortext--wrapper">
+                        Specific Numeric Font Size:
+                        <input type="text" name="txtFontSize" id="fontSize" class="bgcolor-dropdown" />
+                        <div>
+                            Choose a border size:
+                        </div>
+                        <input name="isBorder" value="none" type="radio">
+                        <label>None</label><br>
+                        <input name="isBorder" value="double" type="radio">
+                        <label>Double</label><br>
+                        <input name="isBorder" value="solid" type="radio">
+                        <label>Solid</label>
+                        <br />
+
+                        <input type="checkbox" name="isDefaultPic" value="true" checked id="chkDefaultPic"><label class="mrg-top-bottom">Add the default picture:</label>
+                        <div>Enter a green text below:</div>
+                        <div>
+                            <textarea name="GreetingText" id="txtGreeting" class="form-control"></textarea>
+                        </div>
+                        <div class="div-center--wrapper">
+                            <input type="button" id="btnSubmit" value="Update" />
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div width="600px" id="divCard"></div>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var cardUpdate = {};
+        $("#btnSubmit").click(function () {
+            cardUpdate.BackgroundColor = $("#ddlBackColor").val();
+            cardUpdate.Font = $("#ddlFont").val();
+            cardUpdate.FontSize = $("#fontSize").val();
+            cardUpdate.BorderStyle = $('input[name="isBorder"]:checked').val();
+            cardUpdate.IsDefaultPic = $("#chkDefaultPic").val();
+            cardUpdate.GreetingText = $("#txtGreeting").val();
+            $.ajax({
+                type: "GET",
+                url: "/UpdateCard/GetCardDetails",
+                contentType: "html",
+                data: cardUpdate,
+                success: function (data) {
+                    $("#divCard").html('');
+                    $("#divCard").html(data);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                }
+            });
+        });
+    });
+</script>

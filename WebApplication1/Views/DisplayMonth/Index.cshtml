@@ -1,0 +1,61 @@
+﻿@model WebApplication1.Models.displayMonth
+@{
+    ViewBag.Title = "showMonth";
+}
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .div-background-color {
+            width: 300px;
+            border: 1px solid black;
+            padding: 50px;
+            margin: 20px;
+        }
+
+        .div-center--wrapper {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .show-display-massage {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .reset-left-mrg {
+            margin-left: 18px;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div class="div-background-color">
+            <div>
+                <label>Enter Month No:</label>
+                @Html.EditorFor(model => model.MonthNo)
+            </div>
+            <br />
+            <div>
+                <label>Enter Month Name:</label>
+                <input type="text" value="@ViewBag.Month" name="monthname" />
+            </div>
+            <div class="row">
+                <div class="div-center--wrapper">
+                    <input type="submit" value="Show Month" name="btnclick" />
+                </div>
+                <div class="div-center--wrapper">
+                    <input class="reset-left-mrg" type="submit" value="Reset" name="btnclick" />
+                </div>
+            </div>
+        </div>
+    }
+
+</body>
+</html>

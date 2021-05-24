@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+    <style>
+        .div-background-color {
+            width: 300px;
+            border: 1px solid black;
+            padding: 50px;
+            margin: 20px;
+        }
+
+        .click-text-center {
+            text-align: center;
+        }
+
+        .input-font-width--wrapper {
+            font-size: 1.2rem
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div class="div-background-color">
+            <div>
+                <label>
+                    Enter String :
+                </label>
+                <label class="label-left--wrapper">
+                    <input class="input-font-width--wrapper" type="text" name="value" />
+                </label>
+            </div>
+            <br />
+            <div>
+                <input class="input-font-width--wrapper" type="radio" value="UpperCase" name="stringValue" />
+                <label>
+                    UpperCase
+                </label>
+            </div>
+            <br />
+            <div>
+                <input class="input-font-width--wrapper" type="radio" value="LowerCase" name="stringValue" />
+                <label>
+                    LowerCase
+                </label>
+            </div>
+            <br />
+            <div>
+                <input class="input-font-width--wrapper" type="radio" value="rfc" name="stringValue" />
+                <label>
+                    Right 5 Character
+                </label>
+            </div>
+            <br />
+            <div>
+                <input class="input-font-width--wrapper" type="radio" value="lfc" name="stringValue" />
+                <label>
+                    Left 5 Character
+                </label>
+            </div>
+            <br />
+            <div class="click-text-center">
+                <input class="input-font-width--wrapper" type="submit"
+                       value="Click" />
+            </div>
+            <h2>
+                @Html.Label("Output :")
+                <label> @ViewBag.Value</label>
+            </h2>
+        </div>
+    }
+</body>
+</html>

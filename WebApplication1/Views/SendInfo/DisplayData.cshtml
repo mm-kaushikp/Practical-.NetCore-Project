@@ -1,0 +1,18 @@
+﻿@model WebApplication1.Models.sendData
+@{
+    ViewBag.Title = "DisplayData";
+}
+
+<h2>Get Information</h2>
+<div class="table-bordered">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            @Html.DisplayFor(model => model.dropdownValue)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            @Html.DisplayFor(model => model.CheckValue)
+        </div>
+    </div>
+</div>

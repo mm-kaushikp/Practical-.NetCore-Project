@@ -1,0 +1,48 @@
+﻿@model WebApplication1.Models.DisplayMessage
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    .div-background-color {
+        width: 300px;
+        border: 1px solid black;
+        padding: 50px;
+        margin: 20px;
+    }
+
+    .displaymessage-size {
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    .show-display-massage {
+        margin-top: 18px;
+        text-align: center;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    <div class="div-background-color">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.Label("Enter Your Name:")
+                        @Html.TextBoxFor(model => model.DisplayMassage, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input class="btn btn-secondary show-display-massage" type="submit" value="Click" />
+                    </div>
+                </div>
+                <br />
+                <div>
+                    <label class="displaymessage-size">@ViewBag.DisplayMassage</label>
+                </div>
+            </div>
+        </div>
+    </div>
+}

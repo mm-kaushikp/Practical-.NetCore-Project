@@ -1,0 +1,51 @@
+﻿@model WebApplication1.Models.CardDetails
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+    .mrg-top {
+        margin-top: -34px;
+    }
+
+    .img-mrg {
+        margin-top: 45px;
+        margin-left: 50px;
+        margin-bottom: 13px;
+        margin-right: 47px;
+        height: 500px;
+        width: 453px;
+    }
+
+    .div-mrg-left {
+        margin-left: 50px;
+    }
+
+    .lbltext-center {
+        text-align: center;
+    }
+</style>
+
+<div class="div-mrg-left">
+    <hr />
+    <table style="background-color:@Model.BackgroundColor;border:@Model.BorderStyle;" class="mrg-top">
+        <tr>
+            @{
+                var fontSize = Model.FontSize + "px";
+            }
+            <td><label class="form-control lbltext-center" style="font-size:@fontSize;font-family:@Model.Font;">@Model.GreetingText</label></td>
+        </tr>
+        <tr>
+
+            <td>
+                @if (Model.IsDefaultPic)
+                {
+                    <img class="img-mrg" src="~/Images/background.jpg" width="300px" height="300px" />
+                }
+            </td>
+        </tr>
+    </table>
+</div>

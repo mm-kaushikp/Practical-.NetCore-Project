@@ -1,0 +1,128 @@
+﻿@*@model PagedList.IPagedList<WebApplication1.Models.departmentReport>*@
+@model X.PagedList.PagedList<WebApplication1.Models.departmentReport>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+@{
+    ViewBag.Title = "EmployeeIndex";
+}
+<h2>Employee Index</h2>
+
+<table id="tblEmployee" class="table pagination-sm">
+    <tr>
+        <th>
+
+        </th>
+        <th>
+            Eno
+        </th>
+        <th>
+            FirstName
+        </th>
+        <th>
+            Job
+        </th>
+        <th>
+            Hire Date
+        </th>
+        <th>
+            Salary
+        </th>
+        <th>
+            Commotion
+        </th>
+        <th>
+            Department Name
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td><a href="javascript:void(0);" class="btnLink" data-val="@item.DepartmentId">Select</a></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Eno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HireDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Commition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+        </tr>
+    }
+
+</table>
+
+@(Model.PageCount  < Model.PageCount ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.currentSort, currentFilter = ViewBag.currentFilter }))
+
+
+<div>
+    <div id="EmplDetails"></div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".btnLink").click(function () {
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: "/EmployeeInfoDetails/GetEmpDetails",
+                contentType: "application/html",
+                data: { "employeeId": $(this).attr("data-val") },
+                success: function (data) {
+                    $("#EmplDetails").html('');
+                    $("#EmplDetails").html(data);
+                }
+            });
+        });
+    });
+</script>
+
+
+@*@section Scripts
+    {
+        <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+        <script src="~/js/tblEmployee.js"></script>
+    }*@
+
+
+@*<script type="text/javascript">
+        $(document).ready(function () {
+            $('#tblEmployee').dataTable({
+                "processing": true,
+                "serverSide": true,
+                "filter": true,
+                "ajax": {
+                    url: "/EmployeeInfoDetails/index",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columnDefs": [{
+                    "targets": [0],
+                    "visible": false,
+                    "searchable": false
+                }],
+            });
+        });
+    </script>*@

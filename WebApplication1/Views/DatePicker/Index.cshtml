@@ -1,0 +1,44 @@
+﻿@model WebApplication1.Models.datePicker
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .div-padding {
+        padding: 18px;
+    }
+</style>
+<h2>Date Picker</h2>
+@using (Html.BeginForm())
+{
+    <div class="table-bordered div-padding">
+        <br />
+        <div class="row">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input asp-for="Date" id="datepicker" type="text" class="form-control" autocomplete="off" />
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-md-8 text-center">
+                <input type="submit" class="btn btn-primary btn-mrg" />
+            </div>
+        </div>
+        <br />
+        <div>@ViewBag.Date</div>
+    </div>
+}
+
+@section Scripts
+{
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+}

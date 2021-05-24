@@ -1,0 +1,52 @@
+﻿<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+<style>
+    img {
+        width: 20%;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    <div class="row" style="display:flex;">
+        <div class="col-2">
+            @Html.Label("Select Image:")
+            <div>
+                <input class="input-font-width--wrapper" onClick="document.getElementById('img').setAttribute('src', '/Images/bluehills.jpg');" type="radio"
+                       value="blueHilles"
+                       name="imageValue" checked />
+                <label>
+                    Blue Hilles
+                </label>
+            </div>
+            <div>
+                <input class="input-font-width--wrapper" onClick="document.getElementById('img').setAttribute('src', '/Images/sunset.jpg');" type="radio"
+                       value="sunset"
+                       name="imageValue" />
+                <label>
+                    Sunset
+                </label>
+            </div>
+            <div>
+                <input class="input-font-width--wrapper" onClick="document.getElementById('img').setAttribute('src', '/Images/Water.jpg');" type="radio"
+                       value="waterlilies"
+                       name="imageValue" />
+                <label>
+                    Water Lilies
+                </label>
+            </div>
+            <div>
+                <input class="input-font-width--wrapper" onClick="document.getElementById('img').setAttribute('src', '/Images/water.jpg');" type="radio"
+                       value="winter"
+                       name="imageValue" />
+                <label>
+                    Winter
+                </label>
+            </div>
+        </div>
+        <div class="col-10">
+            <div>
+                <img class="click-img-size" id="img" src="/Images/bluehills.jpg" alt="Logo" />
+            </div>
+        </div>
+    </div>
+}

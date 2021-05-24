@@ -1,0 +1,53 @@
+﻿@model WebApplication1.Models.fileUpload
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>File Upload</h2>
+@using (Html.BeginForm())
+{
+    <div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("File Name :")
+            </div>
+            <div class="col-md-8">
+                <div>
+                    @Html.TextBoxFor(model => model.UploadFile, htmlAttributes: new { @class = "form-contol", @readonly = true, @id = "filePath" })
+                    <br />
+                    <div>
+                        <label for="fileUpload" class="d-inline-block">
+                            Browse
+                        </label>
+                        <input type="file" id="fileUpload" class="btn-primary" onchange="FileDisplay(this);" name="FormFile">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <input type="submit" value="Submit" name="btnClick" class="btn btn-primary" />
+                <input type="submit" value="Reset" name="btnClick" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+    <br />
+    if (ViewBag.result != null)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                @ViewBag.result
+            </div>
+        </div>
+    }
+}
+@section scripts{
+    <script>
+        function FileDisplay(input) {
+            var fileName = $("input[type=file]").get(0).files[0];
+            $('#filePath').val(fileName.name);
+        }
+    </script>
+}

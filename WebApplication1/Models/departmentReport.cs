@@ -12,12 +12,16 @@ namespace WebApplication1.Models
     {
         [Key]
         public int DepartmentId { get; set; }
+        [Display(Name = ("Employee Number"))]
         public string Eno { get; set; }
+        [Display(Name = ("Employee Name"))]
         public string Ename { get; set; }
         public string Job { get; set; }
+        [Display(Name = ("Hire Date"))]
         public string HireDate { get; set; }
         public string Salary { get; set; }
         public string Commition { get; set; }
+        [Display(Name = ("Department Name"))]
         public string DepartmentName { get; set; }
     }
 }
